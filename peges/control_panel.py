@@ -3,37 +3,44 @@ from config.links import Links
 from selenium.webdriver.support import expected_conditions as EC
 
 
-class DevicesPage(BasePage):
-    PAGE_URL = Links.DEVICES
+class ControlPanel(BasePage):
+    PAGE_URL = Links.CONTROL_PANEL
 
-    BUTTON_ADD_DEVICE = ("xpath", "//a[@href='/Devices/Create']")
-    FILTER_CONNECTED = ("xpath", "//input[@data-status='1']")
-    FILTER_DISCONNECTED = ("xpath", "//input[@data-status='2']")
-    FILTER_SLEEP = ("xpath", "//input[@data-status='6']")
-    FILTER_NEVER_CONNECTED = ("xpath", "//input[@data-status='3']")
-    FILTER_IN_TREATMENT = ("xpath", "//input[@data-status='4']")
-    FILTER_TESTS = ("xpath", "//input[@data-status='5']")
+    SWITCHER_MONITORED = ("xpath", "//*[@id='servicelevel-switch']/label[1]/input")
+    SWITCHER_BY_CALL = ("xpath", "//*[@id='servicelevel-switch']/label[2]/input")
 
-    def go_to_page(self):
-        self.driver.get(self.PAGE_URL)
+    CHECKBOX_INTERACTIVE_PIS = ("xpath", "//*[@id='chart-option-XPIS']")
+    CHECKBOX_CITY_INFO_POINT = ("xpath", "//*[@id='chart-option-CityInfo']")
+    CHECKBOX_MINI_INTERACTIVE_PIS = ("xpath", "//*[@id='chart-option-MiniXPIS']")
+    CHECKBOX_SOLAR_PIS = ("xpath", "//*[@id='chart-option-SolarPIS']")
+    CHECKBOX_LED_PIS = ("xpath", "//*[@id='chart-option-LedPIS']")
 
-    def click_add_device(self):
-        self.wait.until(EC.element_to_be_clickable(self.BUTTON_ADD_DEVICE)).click()
 
-    def filter_connected(self):
-        self.wait.until(EC.element_to_be_clickable(self.FILTER_CONNECTED)).click()
+    def click_By_Call(self):
+        self.wait.until(EC.element_to_be_clickable(self.SWITCHER_BY_CALL)).click()
 
-    def filter_disconnected(self):
-        self.wait.until(EC.element_to_be_clickable(self.FILTER_DISCONNECTED)).click()
 
-    def filter_sleep(self):
-        self.wait.until(EC.element_to_be_clickable(self.FILTER_SLEEP)).click()
+    def click_Monitored(self):
+        self.wait.until(EC.element_to_be_clickable(self.SWITCHER_MONITORED)).click()
 
-    def filter_never_connected(self):
-        self.wait.until(EC.element_to_be_clickable(self.FILTER_NEVER_CONNECTED)).click()
 
-    def filter_in_treatment(self):
-        self.wait.until(EC.element_to_be_clickable(self.FILTER_IN_TREATMENT)).click()
+    def click_Interactive_PIS(self):
+        self.wait.until(EC.element_to_be_clickable(self.CHECKBOX_INTERACTIVE_PIS)).click()
 
-    def filter_tests(self):
-        self.wait.until(EC.element_to_be_clickable(self.FILTER_TESTS)).click()
+
+    def click_City_Info_Point(self):
+        self.wait.until(EC.element_to_be_clickable(self.CHECKBOX_CITY_INFO_POINT)).click()
+
+
+    def click_Mini_Interactive_PIS(self):
+        self.wait.until(EC.element_to_be_clickable(self.CHECKBOX_MINI_INTERACTIVE_PIS)).click()
+
+
+    def click_Solar_PIS(self):
+        self.wait.until(EC.element_to_be_clickable(self.CHECKBOX_SOLAR_PIS)).click()
+
+
+    def click_Led_Pis(self):
+        self.wait.until(EC.element_to_be_clickable(self.CHECKBOX_LED_PIS)).click()
+
+

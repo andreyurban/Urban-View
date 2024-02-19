@@ -7,7 +7,31 @@ class DevicesPage(BasePage):
 
     PAGE_URL = Links.DEVICES
 
-    BUTTON_ADD_DEVICE = ("xpath", "//*[@id='breadcrumbs']/div/div/div/div[1]/a")
-    BUTTON_TOGGLE_CONNECTED = ("xpath", "//*[@id='table-filters-row1']/span[1]/label[1]/div/div/label[1]")
-    BUTTON_TOGGLE_DISCONNECTED = ("xpath", "//*[@id='table-filters-row1']/span[1]/label[2]/div/div/label[1]")
-    BUTTON_TOGGLE_SLEEP = ("xpath", "//*[@id='table-filters-row1']/span[1]/label[3]/div/div/label[1]")
+    BUTTON_ADD_DEVICE = ("xpath", "//a[@href='/Devices/Create']")
+    FILTER_CONNECTED = ("xpath", "//input[@data-status='1']")
+    FILTER_DISCONNECTED = ("xpath", "//input[@data-status='2']")
+    FILTER_SLEEP = ("xpath", "//input[@data-status='6']")
+    FILTER_NEVER_CONNECTED = ("xpath", "//input[@data-status='3']")
+    FILTER_IN_TREATMENT = ("xpath", "//input[@data-status='4']")
+    FILTER_TESTS = ("xpath", "//input[@data-status='5']")
+
+    def click_add_device(self):
+        self.wait.until(EC.element_to_be_clickable(self.BUTTON_ADD_DEVICE)).click()
+
+    def filter_connected(self):
+        self.wait.until(EC.e(self.FILTER_CONNECTED)).click()
+
+    def filter_disconnected(self):
+        self.wait.until(EC.element_to_be_clickable(self.FILTER_DISCONNECTED)).click()
+
+    def filter_sleep(self):
+        self.wait.until(EC.element_to_be_clickable(self.FILTER_SLEEP)).click()
+
+    def filter_never_connected(self):
+        self.wait.until(EC.element_to_be_clickable(self.FILTER_NEVER_CONNECTED)).click()
+
+    def filter_in_treatment(self):
+        self.wait.until(EC.element_to_be_clickable(self.FILTER_IN_TREATMENT)).click()
+
+    def filter_tests(self):
+        self.wait.until(EC.element_to_be_clickable(self.FILTER_TESTS)).click()
