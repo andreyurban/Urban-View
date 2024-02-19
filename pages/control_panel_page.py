@@ -1,14 +1,14 @@
+import allure
 from base.base_page import BasePage
 from config.links import Links
 from selenium.webdriver.support import expected_conditions as EC
 
 
-class ControlPanel(BasePage):
+class ControlPanelPage(BasePage):
     PAGE_URL = Links.CONTROL_PANEL
 
     SWITCHER_MONITORED = ("xpath", "//*[@id='servicelevel-switch']/label[1]/input")
     SWITCHER_BY_CALL = ("xpath", "//*[@id='servicelevel-switch']/label[2]/input")
-
     CHECKBOX_INTERACTIVE_PIS = ("xpath", "//*[@id='chart-option-XPIS']")
     CHECKBOX_CITY_INFO_POINT = ("xpath", "//*[@id='chart-option-CityInfo']")
     CHECKBOX_MINI_INTERACTIVE_PIS = ("xpath", "//*[@id='chart-option-MiniXPIS']")

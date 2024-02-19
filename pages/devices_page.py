@@ -19,7 +19,7 @@ class DevicesPage(BasePage):
         self.wait.until(EC.element_to_be_clickable(self.BUTTON_ADD_DEVICE)).click()
 
     def filter_connected(self):
-        self.wait.until(EC.e(self.FILTER_CONNECTED)).click()
+        self.wait.until(EC.element_to_be_clickable(self.FILTER_CONNECTED)).click()
 
     def filter_disconnected(self):
         self.wait.until(EC.element_to_be_clickable(self.FILTER_DISCONNECTED)).click()
