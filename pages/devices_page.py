@@ -4,6 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class DevicesPage(BasePage):
+
     PAGE_URL = Links.DEVICES
 
     BUTTON_ADD_DEVICE = ("xpath", "//a[@href='/Devices/Create']")
@@ -13,9 +14,6 @@ class DevicesPage(BasePage):
     FILTER_NEVER_CONNECTED = ("xpath", "//input[@data-status='3']")
     FILTER_IN_TREATMENT = ("xpath", "//input[@data-status='4']")
     FILTER_TESTS = ("xpath", "//input[@data-status='5']")
-
-    def go_to_page(self):
-        self.driver.get(self.PAGE_URL)
 
     def click_add_device(self):
         self.wait.until(EC.element_to_be_clickable(self.BUTTON_ADD_DEVICE)).click()
