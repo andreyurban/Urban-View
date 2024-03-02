@@ -11,6 +11,7 @@ RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/s
     apk add --force-overwrite glibc-2.30-r0.apk glibc-bin-2.30-r0.apk && \
     rm glibc-2.30-r0.apk glibc-bin-2.30-r0.apk
 
+
 # Install Allure
 RUN apk update && \
     apk add openjdk11-jre curl tar && \
