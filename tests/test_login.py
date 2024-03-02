@@ -2,14 +2,13 @@ import allure
 from base.base_test import BaseTest
 import pytest
 import time
-from pytest_qatouch import qatouch
+
 
 @allure.feature("Testing login Functional")
 class TestLoginFeature(BaseTest):
 
     @allure.title("Test login")
     @allure.severity("Critical")
-    #@qatouch.TR(4)
     @pytest.mark.positive  # negative or positive
     def test_login(self):
         self.login_page.open()
@@ -25,7 +24,6 @@ class TestLoginFeature(BaseTest):
 
     @allure.title("Test login with Wrong Username and Password")
     @allure.severity("Critical")
-    #@qatouch.TR(4)
     @pytest.mark.negative   # negative or positive
     def test_fail_login(self):
         self.login_page.open()
