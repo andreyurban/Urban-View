@@ -11,8 +11,6 @@ RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/s
     apk add --force-overwrite glibc-2.30-r0.apk glibc-bin-2.30-r0.apk && \
     rm glibc-2.30-r0.apk glibc-bin-2.30-r0.apk
 
-
-
 # Install Allure
 RUN apk update && \
     apk add openjdk11-jre curl tar && \
@@ -20,7 +18,6 @@ RUN apk update && \
     tar -zxvf allure-2.13.8.tgz -C /opt/ && \
     [ ! -f /usr/bin/allure ] && ln -s /opt/allure-2.13.8/bin/allure /usr/bin/allure || true && \
     rm allure-2.13.8.tgz
-
 
 WORKDIR /usr/workspace
 
