@@ -23,6 +23,10 @@ jobs:
           WRONG_PASSWORD: ${{ secrets.WRONG_PASSWORD }}
         run: |
           docker-compose up --exit-code-from regression || true
+          
+      - name: Create history directory if missing
+        run: |
+          mkdir -p ./.github/gh-pages/history
 
       - name: Copy history from gh-pages to allure-results
         run: |
