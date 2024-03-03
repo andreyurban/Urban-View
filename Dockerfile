@@ -1,4 +1,4 @@
-FROM python:3.13-rc-alpine
+FROM python:alpine
 
 # Install Chrome and ChromeDriver
 RUN apk update && \
