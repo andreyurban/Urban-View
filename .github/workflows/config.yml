@@ -7,20 +7,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.3.4
 
       - name: Checkout (copy) gh-pages repository to GitHub runner
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.3.4
         with:
           ref: gh-pages
           path: ./.github/gh-pages
 
       - name: Run UI-tests via docker-compose
-        env:
-          LOGIN: ${{ secrets.LOGIN }}
-          PASSWORD: ${{ secrets.PASSWORD }}
-          WRONG_LOGIN: ${{ secrets.WRONG_LOGIN }}
-          WRONG_PASSWORD: ${{ secrets.WRONG_PASSWORD }}
         run: |
           docker-compose up --exit-code-from regression
 
@@ -32,7 +27,7 @@ jobs:
         run: |
           mkdir -p allure-results/history
           if [ -d "./.github/gh-pages/history/" ] && [ "$(ls -A ./.github/gh-pages/history/)" ]; then
-            cp -R ./.github/gh-pages/history/* allure-results/history/
+            cp -R ./.github/gh-pages/history/* allure-results/history/ || echo "Failed to copy history files."
           else
             echo "No history files to copy."
           fi
@@ -43,7 +38,7 @@ jobs:
 
       - name: Update Allure history
         run: |
-          cp -R allure-report/history/* ./.github/gh-pages/history/
+          cp -R allure-report/history/* ./.github/gh-pages/history/ || echo "Failed to update history."
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.5
