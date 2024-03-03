@@ -1,4 +1,4 @@
-FROM python:3.12.0a4-alpine3.17
+FROM python:3.13-rc-alpine
 
 # Install Chrome, ChromeDriver, and glibc compatibility for Alpine
 RUN apk update && \
