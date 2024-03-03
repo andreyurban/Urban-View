@@ -1,5 +1,8 @@
 FROM python:3.13-rc-alpine
 
+# Install build dependencies for cffi
+RUN apk add --no-cache gcc musl-dev libffi-dev
+
 # Install Chrome, ChromeDriver, and glibc compatibility for Alpine
 RUN apk update && \
     apk add --no-cache --force-overwrite chromium chromium-chromedriver tzdata && \
